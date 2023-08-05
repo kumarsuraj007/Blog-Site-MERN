@@ -2,15 +2,15 @@ import postSchema from '../model/postModel.js';
 
 export const createPost = async (req, res) => {
     try {
-        const { title, body, photo} = req.body;
-        if (title === "" || body === "" || photo=== "") {
+        const { title, body, pic} = req.body;
+        if (title === "" || body === "") {
             return res.status(400).json({ error: 'Please add given field!' })
         }
         // req.user.password = undefined;
         const savePost = await postSchema.create({
             title,
             body,
-            photo,
+            photo:pic,
             postedBy: req.user
         })
         res.status(200).json({ Message: 'Post created successfully!' })

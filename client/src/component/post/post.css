@@ -1,0 +1,42 @@
+.post-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    flex-direction: column;
+}
+
+.folder {
+    width: 30px;
+}
+
+.upload-btn{
+    margin: 30px;
+}
+
+.post-input-fields{
+    margin-top: 20px;
+}
+
+.post-input-fields textarea {
+    width: 500px;
+    height: 100px;
+    padding: 10px;
+}
+
+.upload-btn button {
+    width: 150px;
+}
+
+h5{
+    display: inline-block;
+    vertical-align: top;
+    padding-top: 10px;
+}
+
+.title {
+    margin-top: 100px;
+    width: 500px;
+    height: 30px;
+    padding: 10px;
+}

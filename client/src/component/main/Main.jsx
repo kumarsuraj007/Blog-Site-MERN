@@ -17,24 +17,20 @@ function Main() {
 
   return (
     <div className="main-container">
-     {
-        data?.map((item) => {
-            return (
-                <div className="card">
-      <img src={item.photo} />
-      <div className="container-1">
-        <h4>
-          <b>{`Posted by: ${item.postedBy.username}`}</b>
-        </h4>
-        <p>{`Content: ${item.body}`}</p>
-      </div>
+      {data?.map((item) => {
+        return (
+          <div key={item._id} className="card">
+            <img src={item.photo} key={item._id} />
+            <div className="container-1">
+              <h4>
+                <b>{`Posted by: ${item.postedBy.username}`}</b>
+              </h4>
+              <p>{`Content: ${item.body}`}</p>
+            </div>
+          </div>
+        );
+      })}
     </div>
-            )
-        })
-     }
-    
-    </div>
-
   );
 }
 

@@ -33,7 +33,6 @@ function Login () {
         const {user} = response;
         setCurrentUser({user});
         
-        
         if (response.error) {
           return M.toast({ html: response.error, classes: "toast" });
         } else {
