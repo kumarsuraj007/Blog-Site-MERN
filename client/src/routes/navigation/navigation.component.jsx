@@ -1,13 +1,9 @@
-import { useContext } from 'react'
-import { UserContext } from '../../contexts/userContext.jsx'
 import { Outlet, Link } from 'react-router-dom'
 import './navigation.styles.css'
 
 function Navigation () {
-  const {currentUser, setCurrentUser} = useContext(UserContext);
   const logoutUser = () => {
     localStorage.clear();
-    setCurrentUser(null)
   }
  
   return (
@@ -17,7 +13,7 @@ function Navigation () {
         <ul>
         <li><a href='/createpost'>CREATE POST</a></li>
         {
-              currentUser ? (
+              localStorage.getItem('jwt') !== null ? (
                 <Link to='/login'><li onClick={logoutUser}>LOGOUT</li></Link>
               ) : (
                 <Link to='/login'><li>LOGIN</li></Link>

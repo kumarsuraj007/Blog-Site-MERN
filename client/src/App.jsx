@@ -5,6 +5,7 @@ import Navigation from './routes/navigation/navigation.component.jsx';
 import { Routes, Route} from 'react-router-dom'
 import './App.css'
 import Home from './routes/home/home.component.jsx';
+import Post from './component/post/Post.jsx';
 
 
 function App () {
@@ -14,6 +15,7 @@ function App () {
        <Route path='/' element={<Navigation />}>
        <Route index element={<Home />} />
        <Route path='/register' element={< Register/>}/>
+       <Route path='/createpost' element={< Post/>}/>
        <Route path='/login' element={< Login/>}/>
        </Route>
       </Routes>
