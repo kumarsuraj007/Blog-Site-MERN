@@ -1,27 +1,26 @@
 import { useContext } from 'react'
 import { UserContext } from '../../contexts/userContext.jsx'
-import { Outlet } from 'react-router-dom'
+import { Outlet, Link } from 'react-router-dom'
 import './navigation.styles.css'
 
 function Navigation () {
-  const {currentUser} = useContext(UserContext);
-  console.log(currentUser)
+  const {currentUser, setCurrentUser} = useContext(UserContext);
+  const logoutUser = () => {
+    localStorage.clear();
+    setCurrentUser(null)
+  }
  
   return (
     <>
     <div className='nav'>
-        <h1><a href='/'>BLOG PIX</a></h1>
+    <Link to='/'><h1>BLOG PIX</h1></Link>
         <ul>
         <li><a href='/createpost'>CREATE POST</a></li>
         {
               currentUser ? (
-                <li><a href='/' onClick={
-                  () => {
-                    localStorage.clear()
-                  }
-                }>LOGOUT</a></li>
+                <Link to='/login'><li onClick={logoutUser}>LOGOUT</li></Link>
               ) : (
-                <li><a href='/login'>LOGIN</a></li>
+                <Link to='/login'><li>LOGIN</li></Link>
               )
             }
             
