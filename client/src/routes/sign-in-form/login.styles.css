@@ -1,0 +1,96 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+ }
+ 
+ h1{
+     letter-spacing: 10px;
+     font-size: 25px;
+ }
+ 
+ .my-card {
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     height: 100vh;
+ }
+ 
+ .input-fields{
+     display: flex;
+     flex-direction: column;
+     margin-top: 50px;
+     border: 1px solid black;
+     padding: 50px;
+ }
+ 
+ .input-fields input{
+     width: 300px;
+     margin: 10px;
+     padding: 10px 10px;
+     font-size: 15px;
+     outline: none;
+     background: transparent;
+     color: black;
+ }
+ 
+ input::placeholder{
+     color: black;
+ }
+ 
+ .btn-container {
+     display: flex;
+     justify-content: center;
+     margin: 10px;
+     flex-direction: column;
+ }
+ 
+ button {
+   background-color: rgb(61, 61, 61);
+   height: 40px;
+   color: white;
+   font-weight: bold;
+   border: none;
+   cursor: pointer;
+   transition: 0.4s ease;
+ }
+ 
+ button:hover {
+     background-color: rgb(49, 49, 49);
+ }
+ 
+ p {
+     padding-top: 20px;
+     cursor: pointer;
+     font-size: 18px;
+ }
+
+ .toast {
+     position: absolute !important;
+     left: 100px;
+     top: 40px;
+     margin-top: 60px;
+     padding: 10px 20px;
+     background-color: #c62828;
+     color: white;
+     font-size: 20px;
+ }
+ 
+ .toast1 {
+     position: absolute !important;
+     left: 100px;
+     top: 40px;
+     margin-top: 60px;
+     padding: 10px 20px;
+     background-color: #00897b;
+     color: white;
+     font-size: 20px;
+ }
+ 
+ 
+ @media screen and (max-width: 480px) {
+     .input-fields input{
+         width: 250px;
+     }
+ }

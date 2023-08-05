@@ -1,0 +1,23 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+h2 {
+    letter-spacing: 4px;
+    font-size: 50px;
+}
+
+span {
+    margin: 50px;
+    text-align: center;
+}
+
+.btn {
+    width: 200px;
+    height: 60px;
+
+}
