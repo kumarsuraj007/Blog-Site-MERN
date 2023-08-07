@@ -31,6 +31,7 @@ function Login () {
         });
         const response = await fetchData.json();
         const {user} = response;
+        console.log(user)
         setCurrentUser({user});
         
         if (response.error) {
