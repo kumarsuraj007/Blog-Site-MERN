@@ -30,9 +30,19 @@ export const allPost = async (req, res) => {
 
 export const deletePost = async (req, res) => {
     try {
-        const {id} = req.params;
         await postSchema.findByIdAndDelete({_id:req.params.id}).populate("postedBy", "_id")
         res.status(200).json({message: "Post Deleted!"})
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const updatePost = async (req, res) => {
+    try {
+        await postSchema.findByIdAndUpdate({_id:req.params.id}, req.body ,{
+            new: true
+        }).populate("postedBy", "_id")
+        res.status(200).json({message: "Post Updated!"})
     } catch (error) {
         console.log(error)
     }

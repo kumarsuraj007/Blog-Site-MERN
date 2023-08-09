@@ -51,7 +51,7 @@ export const signInUser = asyncHandler(async (req, res) => {
             _id : matchUser.id
         }, secret_key);
         const {_id, name, email, } = matchUser;
-        res.json({message: 'Successfully Login', token, user:{_id, name, email}})
+        res.json({message: 'Successfully Login', token, user:{_id, name}})
     } else {
         return res.status(400).json({error: 'Wrong Credentials!'}) 
     }

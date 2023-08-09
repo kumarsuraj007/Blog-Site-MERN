@@ -1,12 +1,11 @@
 import { useEffect, useState, useContext } from "react";
 import deleteBtn from "../../assets/delete.png";
-import { UserContext } from "../../contexts/userContext.jsx";
 import M from "materialize-css";
 import "./main.css";
 
 function Main() {
   const [data, setData] = useState();
-  const { currentUser } = useContext(UserContext);
+  const userId = localStorage.getItem("user");
 
   useEffect(() => {
     fetch("http://localhost:8000/api/post/allpost", {
@@ -20,21 +19,22 @@ function Main() {
       });
   });
 
-  const deletePost = (id) => {
-    fetch(`http://localhost:8000/api/post/delete/${id}`, {
-      method: "delete",
+  const updatePost = (id) => {
+    const { title, body, photo } = req.body;
+    fetch(`http://localhost:8000/api/post/update/${id}`, {
+      method: "put",
       headers: {
         "Content-type": "application/json",
         Authorization: "Bearer " + localStorage.getItem("jwt"),
       },
+      body: JSON.stringify({
+        title,
+        body,
+        photo,
+      }),
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log(result);
-        // const newData = data.filter(item => {
-        //   return item._id !== result._id
-        // })
-        // setData(newData)
         if (result.error) {
           return M.toast({
             html: result.error,
@@ -47,6 +47,30 @@ function Main() {
           });
         }
       });
+
+    const deletePost = (id) => {
+      fetch(`http://localhost:8000/api/post/delete/${id}`, {
+        method: "delete",
+        headers: {
+          "Content-type": "application/json",
+          Authorization: "Bearer " + localStorage.getItem("jwt"),
+        },
+      })
+        .then((res) => res.json())
+        .then((result) => {
+          if (result.error) {
+            return M.toast({
+              html: result.error,
+              classes: "#c62828 red darken-3 toast",
+            });
+          } else {
+            M.toast({
+              html: result.message,
+              classes: "#388e3c green darken-2 toast1",
+            });
+          }
+        });
+    };
   };
 
   return (
@@ -58,7 +82,6 @@ function Main() {
             <div className="container-1">
               <h4>
                 {`Posted by: ${item.postedBy.username}`}
-
                 <img
                   src={deleteBtn}
                   onClick={() => deletePost(item._id)}

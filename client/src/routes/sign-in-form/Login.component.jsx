@@ -31,14 +31,14 @@ function Login () {
         });
         const response = await fetchData.json();
         const {user} = response;
-        console.log(user)
+        console.log(response)
         setCurrentUser({user});
         
         if (response.error) {
           return M.toast({ html: response.error, classes: "toast" });
         } else {
           localStorage.setItem("jwt", response.token);
-          localStorage.setItem("user", JSON.stringify(response.user));
+          localStorage.setItem("user", JSON.stringify(response.user._id));
           M.toast({ html: response.message, classes: "toast1" });
           navigate("/");
         }
